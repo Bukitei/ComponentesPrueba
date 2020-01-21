@@ -36,10 +36,12 @@ public class ButtonBill implements Initializable{
     
     public StringProperty id = new SimpleStringProperty();
     
-    public ButtonBill() throws IOException {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/JugadoresFXML.fxml"));
+    public ButtonBill(String id) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ActionView.fxml"));
 		loader.setController(this);
 		loader.load();
+		setId(id);
+		
 	}
 
 	@Override
@@ -50,5 +52,22 @@ public class ButtonBill implements Initializable{
 	public HBox getView() {
 		return view;
 	}
+
+	public final StringProperty idProperty() {
+		return this.id;
+	}
+	
+
+	public final String getId() {
+		return this.idProperty().get();
+	}
+	
+
+	public final void setId(final String id) {
+		this.idProperty().set(id);
+	}
+	
+	
+	
 
 }

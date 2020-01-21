@@ -25,7 +25,7 @@ public class Bill  extends RecursiveTreeObject<Bill>{
 		setConditions(conditions);
 		setState(state);
 		setButtons(buttons);
-		
+		//Le establecemos todos los datos
 	}
 
 	public final StringProperty idProperty() {

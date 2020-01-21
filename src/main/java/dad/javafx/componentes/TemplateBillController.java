@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 
 public class TemplateBillController implements Initializable{
@@ -39,7 +40,7 @@ public class TemplateBillController implements Initializable{
 	    private Label tittle;
 
 	    @FXML
-	    private JFXTreeTableView<Bill> billTable;
+	    private TableView<Bill> billTable;
 
 
 	// Modelo
@@ -58,6 +59,9 @@ public class TemplateBillController implements Initializable{
 		
 		tittle.textProperty().bindBidirectional(tittleLbl);
 		filter.setItems(filterCmb);
+		filter.setValue("Filtro");
+		
+		billTable.itemsProperty().bind(billLst);
 		
 	}
 	
@@ -70,6 +74,36 @@ public class TemplateBillController implements Initializable{
 	public VBox getView() {
 		return view;
 	}
+
+	public final ListProperty<Bill> billLstProperty() {
+		return this.billLst;
+	}
+	
+
+	public final ObservableList<Bill> getBillLst() {
+		return this.billLstProperty().get();
+	}
+	
+
+	public final void setBillLst(final ObservableList<Bill> billLst) {
+		this.billLstProperty().set(billLst);
+	}
+
+	public final StringProperty tittleLblProperty() {
+		return this.tittleLbl;
+	}
+	
+
+	public final String getTittleLbl() {
+		return this.tittleLblProperty().get();
+	}
+	
+
+	public final void setTittleLbl(final String tittleLbl) {
+		this.tittleLblProperty().set(tittleLbl);
+	}
+	
+	
 	
 	
 }
